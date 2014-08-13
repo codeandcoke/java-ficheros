@@ -9,8 +9,9 @@ import javax.swing.table.TableColumn;
 import org.sfsoft.serializar.base.Equipo;
 
 /**
- * Tabla para visualizar información sobre Equipos
+ * Tabla para visualizar informaciÃ³n sobre Equipos
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 @SuppressWarnings("serial")
 public class TablaEquipo extends JTable {
@@ -37,17 +38,9 @@ public class TablaEquipo extends JTable {
 	 */
 	public void inicializar(ArrayList<Equipo> equipos) {
 		
-		TableColumn columna;
-		
-		columna = new TableColumn(this.modeloTabla.getColumnCount());
-			columna.setHeaderValue("Nombre");
-			this.modeloTabla.addColumn((String) columna.getHeaderValue());
-		columna = new TableColumn(this.modeloTabla.getColumnCount());
-			columna.setHeaderValue("Patrocinador");
-			this.modeloTabla.addColumn((String) columna.getHeaderValue());
-		columna = new TableColumn(this.modeloTabla.getColumnCount());
-			columna.setHeaderValue("Camiseta");
-			this.modeloTabla.addColumn((String) columna.getHeaderValue());
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Patrocinador");
+        modeloTabla.addColumn("Camiseta");
 		
 		this.equipos = equipos;
 	}
@@ -60,7 +53,7 @@ public class TablaEquipo extends JTable {
 		this.modeloTabla.setNumRows(0);
 		for (Equipo equipo : this.equipos) {
 			
-			// Crea un vector para añadir una fila con algunos de los datos del equipo
+			// Crea un vector para aÃ±adir una fila con algunos de los datos del equipo
 			Object[] fila = new String[]{equipo.getNombre(), equipo.getPatrocinador(), equipo.getColor1()};			
 			this.modeloTabla.addRow(fila);
 		}
@@ -75,7 +68,7 @@ public class TablaEquipo extends JTable {
 		this.modeloTabla.setNumRows(0);
 		for (Equipo equipo : this.equipos) {
 			
-			// Crea un vector para añadir una fila con algunos de los datos del equipo
+			// Crea un vector para aÃ±adir una fila con algunos de los datos del equipo
 			if (equipo.getNombre().contains(filtro) || equipo.getPatrocinador().contains(filtro) ||
 					equipo.getColor1().contains(filtro)) {
 				Object[] fila = new String[]{equipo.getNombre(), equipo.getPatrocinador(), equipo.getColor1()};			
@@ -106,7 +99,7 @@ public class TablaEquipo extends JTable {
 	 */
 	public String getNombreEquipoSeleccionado() {
 		
-		int filaSeleccionada = 0;
+		int filaSeleccionada;
 		
 		filaSeleccionada = this.getSelectedRow();
 		if (filaSeleccionada == -1) {
@@ -117,7 +110,7 @@ public class TablaEquipo extends JTable {
 	}
 	
 	/**
-	 * Vacía el contenido de la tabla
+	 * VacÃ­a el contenido de la tabla
 	 */
 	public void vaciar() {
 		

@@ -8,13 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * RecopilaciÛn de mÈtodos para trabajar con ficheros
+ * Recopilaci√≥n de m√©todos para trabajar con ficheros
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Ficheros {
 
 	/**
-	 * Serializa un objeto a un fichero cuya ruta se pasa como par·metro
+	 * Serializa un objeto a un fichero cuya ruta se pasa como par√°metro
 	 * @param objeto El objeto que se quiere serializar
 	 * @param rutaFichero La ruta al fichero
 	 * @throws IOException En caso de fallo de escritura
@@ -36,15 +37,14 @@ public class Ficheros {
 	}
 	
 	/**
-	 * Devuelve un objeto al deserializarlo de un fichero cuya ruta se para como par·metro
+	 * Devuelve un objeto al deserializarlo de un fichero cuya ruta se para como par√°metro
 	 * @param rutaFichero La ruta al fichero
-	 * @return El objeto que habÌa serializado en el fichero
-	 * @throws FileNotFoundException En caso de que no se encuentre el fichero especificado
+	 * @return El objeto que hab√≠a serializado en el fichero
 	 * @throws ClassNotFoundException En caso de que no pueda tratarse la clase serializada en el fichero
 	 * @throws IOException En caso de fallo de lectura de disco
 	 */
 	public static Object leerObjeto(String rutaFichero) 
-		throws FileNotFoundException, ClassNotFoundException, IOException {
+		throws ClassNotFoundException, IOException {
 		
 		FileInputStream fichero = null;
 		ObjectInputStream serializador = null;

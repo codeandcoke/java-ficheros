@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * Clase que representa a una persona
  * @author Santiago Faci
+ * @version curso 2014-2015
  *
  */
 public class Persona implements Serializable {

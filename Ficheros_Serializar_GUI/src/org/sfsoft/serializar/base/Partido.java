@@ -5,6 +5,7 @@ import java.util.Date;
 /**
  * Clase que representa a un partido
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Partido {
 	

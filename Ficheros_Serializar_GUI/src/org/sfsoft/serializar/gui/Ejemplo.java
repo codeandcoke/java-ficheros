@@ -44,7 +44,6 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import org.sfsoft.serializar.bean.TablaEquipo;
 import javax.swing.JScrollPane;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -52,18 +51,18 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * Interfaz principal de la aplicación
- * Se han modificado algunas preferencias en la generación de código para que la declaración de los controles
- * gráficos se haga a nivel de clase y no localmente en el método initialize()
+ * Interfaz principal de la aplicaciÃ³n
+ * Se han modificado algunas preferencias en la generaciÃ³n de cÃ³digo para que la declaraciÃ³n de los controles
+ * grÃ¡ficos se haga a nivel de clase y no localmente en el mÃ©todo initialize()
  * @author Santiago Faci
+ * @version curso 2014-2015
  * 
- * Están todas las funcionalidades implementadas para la pestaña de Equipos
+ * EstÃ¡n todas las funcionalidades implementadas para la pestaÃ±a de Equipos
  * 
- * TODO Hacer que la barra de menú haga algo, como salir de la aplicación o mostrar una ventana con el Acerca de
- * 		Alta/Baja/Modificar/Eliminar Mostrar Partidos
- * 		Baja/Modificar/Eliminar/Mostrar Jugadores
- * 		Que a la hora de dar de alta cualquier objeto compruebe si no existe ya (si se repiten o no los valores
- *         obligatorios
+ * TODO Hacer que la barra de menÃº haga algo, como salir de la aplicaciÃ³n o mostrar una ventana con el Acerca de
+ * TODO Alta/Baja/Modificar/Eliminar Mostrar Partidos
+ * TODO	Baja/Modificar/Eliminar/Mostrar Jugadores
+ * TODO Que a la hora de dar de alta cualquier objeto compruebe si no existe ya (si se repiten o no los valores obligatorios
  */
 
 public class Ejemplo {
@@ -97,13 +96,14 @@ public class Ejemplo {
 	private ArrayList<Jugador> jugadores;
 	private ArrayList<Partido> partidos;
 	
-	// Enumeración para especificar la acción del usuario al pulsar en el botón 'Guardar'
+	// EnumeraciÃ³n para especificar la acciÃ³n del usuario al pulsar en el botÃ³n 'Guardar'
 	private enum Accion {NUEVO, MODIFICAR};
 	private Accion accion;
 	
 	public static void main(String[] args) {
 		
 		try {
+            // Modifica el tema de la aplicaciÃ³n
 	        UIManager.setLookAndFeel(
 	            UIManager.getSystemLookAndFeelClassName());
 	        	//UIManager.getCrossPlatformLookAndFeelClassName());
@@ -160,7 +160,7 @@ public class Ejemplo {
 		this.tablaEquipos.listar();
 	}
 	
-	// Da de alta un nuevo jugador. Método invocado por el botón correspondiente
+	// Da de alta un nuevo jugador. MÃ©todo invocado por el botÃ³n correspondiente
 	// FIXME No comprueba si se dan de alta jugadores repetidos (mismo nombre y apellidos)
 	private void nuevoJugador() {
 	
@@ -201,8 +201,8 @@ public class Ejemplo {
 	}
 	
 	private void eliminaJugador() {
-		/* TODO Eliminar jugadore seleccionado en la tabla donde se muestran los jugadores
-		 * Habría que crear y añadir una TablaJugador (similar a TablaEquipo)
+		/* TODO Eliminar jugadores seleccionados en la tabla donde se muestran los jugadores
+		 * HabrÃ­a que crear y aÃ±adir una TablaJugador (similar a TablaEquipo)
 		 */
 	}
 	
@@ -235,8 +235,8 @@ public class Ejemplo {
 	
 	/*
 	 * Guarda los datos que ha introducido el usuario
-	 * Registrará un nuevo equipo si el usuario había pulsado 'Nuevo' anteriormente
-	 * Modificará los datos de un equipo si el usuario había pulsado 'Modificar' anteriormente
+	 * RegistrarÃ¡ un nuevo equipo si el usuario habÃ­a pulsado 'Nuevo' anteriormente
+	 * ModificarÃ¡ los datos de un equipo si el usuario habÃ­a pulsado 'Modificar' anteriormente
 	 * 
 	 * FIXME: No comprueba que haya equipos repetidos al registrarlo como nuevos o modificarlos
 	 */
@@ -244,7 +244,7 @@ public class Ejemplo {
 		
 		Equipo equipo = null;
 		
-		// Evalúa que acción debe realizar: NUEVO, MODIFICAR
+		// EvalÃºa que acciÃ³n debe realizar: NUEVO, MODIFICAR
 		switch (this.accion) {
 		case NUEVO:
 			
@@ -283,7 +283,7 @@ public class Ejemplo {
 			break;
 		case MODIFICAR:
 			
-			if (Util.mensajeConfirmacion("¿Estás seguro?") == JOptionPane.NO_OPTION)
+			if (Util.mensajeConfirmacion("Â¿EstÃ¡s seguro?") == JOptionPane.NO_OPTION)
 				return;
 			
 			equipo = this.tablaEquipos.getEquipoSeleccionado();
@@ -312,7 +312,7 @@ public class Ejemplo {
 	}
 	
 	/*
-	 * Desactiva los controles del interfaz de manera que sólo se pueden visualizar datos
+	 * Desactiva los controles del interfaz de manera que sÃ³lo se pueden visualizar datos
 	 */
 	private void apagarControlesEquipo() {
 		
@@ -343,7 +343,7 @@ public class Ejemplo {
 	}
 	
 	/*
-	 * Cancela la edición del equipo, tanto de alta de nuevos equipos como de modificación de existentes
+	 * Cancela la ediciÃ³n del equipo, tanto de alta de nuevos equipos como de modificaciÃ³n de existentes
 	 */
 	private void cancelarEquipo() {
 	
@@ -409,15 +409,15 @@ public class Ejemplo {
 	 */
 	private void eliminarEquipo() {
 		
-		String nombreEquipo = null;
+		String nombreEquipo;
 		
 		nombreEquipo = this.tablaEquipos.getNombreEquipoSeleccionado();
 		if (nombreEquipo == null) {
-			Util.mensajeError("No se ha seleccionado ningún equipo");
+			Util.mensajeError("No se ha seleccionado ningÃºn equipo");
 			return;
 		}
 		
-		if ((Util.mensajeConfirmacion("¿Estás seguro de que quieres eliminar el equipo " + nombreEquipo)) ==
+		if ((Util.mensajeConfirmacion("Â¿EstÃ¡s seguro de que quieres eliminar el equipo " + nombreEquipo)) ==
 				(JOptionPane.NO_OPTION)) {
 			return;
 		}
@@ -428,7 +428,7 @@ public class Ejemplo {
 			this.tablaEquipos.listar();
 			this.cbEquipo.listar();
 			
-			this.panelEstado.setMensaje("El equipo " + nombreEquipo + " se ha eliminado con éxito");
+			this.panelEstado.setMensaje("El equipo " + nombreEquipo + " se ha eliminado con Ã©xito");
 		} catch (IOException ioe) {
 			Util.mensajeError("No se ha podido eliminar el equipo. Vuelva a intentarlo");
 		}
@@ -481,9 +481,6 @@ public class Ejemplo {
 		this.txtCategoria.setText("");
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmPcFutbolDam = new JFrame();
 		this.frmPcFutbolDam.setTitle("PC Futbol DAM");
@@ -614,7 +611,6 @@ public class Ejemplo {
 					.addGap(15))
 		);
 		panel.setLayout(gl_panel);
-		panel.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{this.txtNombreJugador, this.txtApellidos, this.txtFechaNacimiento, this.txtDireccion, this.txtTelefono, this.cbEquipo, btnInsertar_1, btnCancelar_1, lblNewLabel, lblApellidos, lblNewLabel_1, lblNewLabel_2, lblNewLabel_3, lblEquipo, this.separator}));
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Equipos", null, panel_1, null);
@@ -808,8 +804,6 @@ public class Ejemplo {
 		});
 		this.scrollPane.setViewportView(this.tablaEquipos);
 		panel_1.setLayout(gl_panel_1);
-		panel_1.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{this.txtNombreEquipo, this.txtPatrocinador, this.txtColor1, this.txtColor2, this.txtCategoria, btGuardarEquipo, btCancelarEquipo, lblNombre, lblPatrocinador, lblCamiseta, lblCamiseta_1, lblCategora, this.separator_1, this.scrollPane, this.tablaEquipos}));
-		this.frmPcFutbolDam.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{this.panelEstado, panel, tabbedPane, lblNewLabel, lblApellidos, lblNewLabel_1, lblNewLabel_2, lblNewLabel_3, lblEquipo, this.cbEquipo, this.txtTelefono, this.txtDireccion, this.txtNombreJugador, this.txtApellidos, this.txtFechaNacimiento, btnInsertar_1, btnCancelar_1, this.separator, panel_1, lblNombre, lblPatrocinador, lblCamiseta, lblCamiseta_1, lblCategora, this.txtCategoria, this.txtNombreEquipo, this.txtPatrocinador, this.txtColor1, this.txtColor2, btGuardarEquipo, btCancelarEquipo, this.separator_1, this.scrollPane, this.tablaEquipos}));
 		
 		JMenuBar menuBar = new JMenuBar();
 		frmPcFutbolDam.setJMenuBar(menuBar);

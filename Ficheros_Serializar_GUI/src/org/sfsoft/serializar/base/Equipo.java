@@ -3,8 +3,9 @@ package org.sfsoft.serializar.base;
 import java.io.Serializable;
 
 /**
- * Clase que representa a un equipo de fútbol
+ * Clase que representa a un equipo de fÃºtbol
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Equipo implements Serializable {
 

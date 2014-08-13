@@ -3,9 +3,9 @@ package org.sfsoft.serializar.util;
 import javax.swing.JOptionPane;
 
 /**
- * Recopilación de métodos de utilidad para el proyecto
+ * RecopilaciÃ³n de mÃ©todos de utilidad para el proyecto
  * @author Santiago Faci
- *
+ * @version curso 2014-2015
  */
 public class Util {
 
@@ -26,12 +26,12 @@ public class Util {
 	}
 	
 	/**
-	 * Muestra un mensaje de confirmación en una ventana emergente
+	 * Muestra un mensaje de confirmaciÃ³n en una ventana emergente
 	 * @param mensaje El mensaje mostrado al usuario
 	 * @return El valor seleccionado por el usuario (Si/No)
 	 */
 	public static int mensajeConfirmacion(String mensaje) {
 		
-		return JOptionPane.showConfirmDialog(null, mensaje, "Confirmación", JOptionPane.YES_NO_OPTION);
+		return JOptionPane.showConfirmDialog(null, mensaje, "ConfirmaciÃ³n", JOptionPane.YES_NO_OPTION);
 	}
 }

@@ -9,8 +9,9 @@ import org.sfsoft.serializar.base.Equipo;
 /**
  * Combo personalizado para trabajar con Equipos
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
-public class ComboEquipo extends JComboBox {
+public class ComboEquipo extends JComboBox<String> {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Equipo> equipos;
@@ -34,7 +35,7 @@ public class ComboEquipo extends JComboBox {
 	 */
 	public void listar() {
 		
-		// Antes de listarlo, tendremos que borrar todo su contenido
+		// Antes de listarlo, tendremos que borrar su contenido
 		this.removeAllItems();
 		
 		if (this.equipos.size() == 0) {
@@ -49,7 +50,7 @@ public class ComboEquipo extends JComboBox {
 	}
 	
 	/**
-	 * Devuelve el equipo que estÈ seleccionado en cada momento
+	 * Devuelve el equipo que est√° seleccionado en cada momento
 	 * @return El equipo seleccionado
 	 */
 	public Equipo getEquipo() {
@@ -57,18 +58,18 @@ public class ComboEquipo extends JComboBox {
 		int posicion = 0;
 		Equipo equipo = null;
 		
-		// Si no hay ning˙n elemento pulsado se devuelve null
+		// Si no hay ning√∫n elemento pulsado se devuelve null
 		posicion = this.getSelectedIndex();
 		if (posicion == -1) {
 			return null;
 		}
 		
-		// Est· seleccionado '<Selecciona Equipo>'
+		// Est√° seleccionado '<Selecciona Equipo>'
 		if (posicion == 0) {
 			return null;
 		}
 		
-		// El combo siempre contiene un elemento m·s de los que hay realmente
+		// El combo siempre contiene un elemento m√°s de los que hay realmente
 		equipo = this.equipos.get(posicion - 1);
 		return equipo;
 	}

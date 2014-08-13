@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * Clase que representa a un jugador
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Jugador implements Serializable {
 

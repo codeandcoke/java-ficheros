@@ -1,8 +1,9 @@
 package org.sfsoft.serializar.util;
 
 /**
- * Constantes de la aplicación
+ * Constantes de la aplicaciÃ³n
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Constantes {
 

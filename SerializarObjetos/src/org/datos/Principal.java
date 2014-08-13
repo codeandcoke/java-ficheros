@@ -8,6 +8,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * Clase Principal.
+ * Almacena una lista de objetos y la carga para comprobar que funciona
+ * @author Santiago Faci
+ * @version curso 2014-2015
+ */
 public class Principal {
 
 	public void escribirObjeto(Object objeto) {

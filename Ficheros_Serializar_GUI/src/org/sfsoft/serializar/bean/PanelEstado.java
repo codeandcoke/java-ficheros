@@ -15,12 +15,13 @@ import java.awt.BorderLayout;
  * Clase que representa una barra de estado
  * Es un Panel con dos cajas de texto, los cuales puedo cambiar/leer mediantes getters y setters
  * @author Santiago Faci
+ * @version curso 2014-2015
  *
  */
 public class PanelEstado extends JPanel {
 
 	/**
-	 * Panel de estado con soporte para dos lÌneas de mensaje
+	 * Panel de estado con soporte para dos l√≠neas de mensaje
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel lbMensaje = new JLabel();
@@ -64,7 +65,7 @@ public class PanelEstado extends JPanel {
 	}
 	
 	/**
-	 * Inicializa el apartado gr·fico del panel
+	 * Inicializa el apartado gr√°fico del panel
 	 */
 	public void inicializar() {
 		

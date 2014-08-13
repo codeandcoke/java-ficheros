@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Busca un objeto dentro de una lista
  * 
  * @author Santiago Faci
+ * @version curso 2014-2015
  */
 public class Principal {
 

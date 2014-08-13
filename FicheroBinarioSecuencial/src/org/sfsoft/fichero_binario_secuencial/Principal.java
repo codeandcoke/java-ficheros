@@ -12,6 +12,7 @@ import java.io.IOException;
  * TODO Que el nombre del fichero a la hora de escribir/leer se pase como parámetro
  * TODO Implementar una interfaz sencilla para cargar y almacenar información en un fichero binario secuencial
  * @author Santiago Faci
+ * @version curso 2014-2015
  *
  */
 public class Principal {
