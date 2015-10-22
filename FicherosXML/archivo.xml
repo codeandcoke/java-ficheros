@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml>
+    <Personas>
+        <Persona>
+            <nombre>Persona1</nombre>
+            <apellidos>1</apellidos>
+        </Persona>
+        <Persona>
+            <nombre>Persona2</nombre>
+            <apellidos>2</apellidos>
+        </Persona>
+        <Persona>
+            <nombre>Persona3</nombre>
+            <apellidos>3</apellidos>
+        </Persona>
+    </Personas>
+</xml>

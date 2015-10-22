@@ -24,8 +24,8 @@ public class Principal {
 		try {
 			fichero = new FileOutputStream("archivo.dat");
 			serializador = new ObjectOutputStream(fichero);
-			
-			serializador.writeObject(objeto);
+
+            serializador.writeObject(new Persona());
 			
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
@@ -87,6 +87,6 @@ public class Principal {
 		
 		principal.escribirObjeto(listaObjetos);
 		
-		listaObjetos = (ArrayList<Persona>) principal.leerObjeto();		
+		listaObjetos = (ArrayList<Persona>) principal.leerObjeto();
 	}
 }
