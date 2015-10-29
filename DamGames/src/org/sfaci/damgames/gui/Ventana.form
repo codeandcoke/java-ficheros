@@ -301,17 +301,10 @@
                   <enabled value="false"/>
                 </properties>
               </component>
-              <component id="f242e" class="javax.swing.JComboBox" binding="cbProgramadorJuego">
+              <component id="beb14" class="org.sfaci.damgames.gui.JComboProgramador" binding="JComboProgramador2" custom-create="true" default-binding="true">
                 <constraints>
-                  <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                  <forms/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="5861b" class="javax.swing.JComboBox" binding="cbCompaniaJuego">
-                <constraints>
-                  <grid row="14" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                  <forms/>
+                  <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
                 </constraints>
                 <properties/>
               </component>
@@ -564,16 +557,6 @@
                   <text value="&gt;"/>
                 </properties>
               </component>
-              <component id="99cbd" class="javax.swing.JButton" binding="btUltimoCompania">
-                <constraints>
-                  <grid row="16" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <forms defaultalign-horz="false"/>
-                </constraints>
-                <properties>
-                  <preferredSize width="90" height="25"/>
-                  <text value="&gt;|"/>
-                </properties>
-              </component>
             </children>
           </grid>
           <grid id="15eeb" layout-manager="FormLayout">
@@ -694,13 +677,6 @@
                     <preferred-size width="150" height="-1"/>
                   </grid>
                   <forms defaultalign-horz="false"/>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="d2eed" class="javax.swing.JComboBox" binding="cbCompaniaProgramador">
-                <constraints>
-                  <grid row="8" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                  <forms/>
                 </constraints>
                 <properties/>
               </component>

@@ -24,7 +24,6 @@ import java.util.List;
 public class Ventana {
     private JPanel panel1;
     private JTabbedPane tpPestanas;
-    private JComboBox<Programador> cbCompaniaProgramador;
     private JTextField tfNombreJuego;
     private JTextField tfGeneroJuego;
     private JTextField tfSoporteJuego;
@@ -74,10 +73,9 @@ public class Ventana {
     private JButton btUltimoProgramador;
     private JDateChooser dcFechaFundacionCompania;
     private JDateChooser dcFechaPublicacion;
-    private JComboBox<Programador> cbProgramadorJuego;
-    private JComboBox<Compania> cbCompaniaJuego;
     private JTextField tfFiltroCompania;
     private JLabel lbEstado;
+    private JComboProgramador JComboProgramador2;
 
     private List<Juego> listaJuegos;
     private List<Compania> listaCompanias;
@@ -233,6 +231,10 @@ public class Ventana {
         });
     }
 
+    private void createUIComponents() {
+        JComboProgramador2 = new JComboProgramador<Programador>(listaProgramadores);
+    }
+
     private void cargarPestanaActual() {
         int indice = tpPestanas.getSelectedIndex();
 
@@ -254,13 +256,7 @@ public class Ventana {
     private void refrescarCombos(Tipo tipo) {
         switch (tipo) {
             case JUEGO:
-                cbProgramadorJuego.removeAllItems();
-                for (Programador programador : listaProgramadores)
-                    cbProgramadorJuego.addItem(programador);
 
-                cbCompaniaJuego.removeAllItems();
-                for (Compania compania : listaCompanias)
-                    cbCompaniaJuego.addItem(compania);
 
                 break;
             case COMPANIA:
@@ -287,8 +283,6 @@ public class Ventana {
                 tfSoporteJuego.setText(juego.getSoporte());
                 tfPrecioJuego.setText(String.valueOf(juego.getPrecio()));
                 tfEdadMinimaJuego.setText(String.valueOf(juego.getEdadMinima()));
-                cbProgramadorJuego.setSelectedItem(juego.getProgramador());
-                cbCompaniaJuego.setSelectedItem(juego.getCompania());
 
                 break;
             case COMPANIA:
@@ -320,8 +314,7 @@ public class Ventana {
                     tfPrecioJuego.setText("");
                     dcFechaPublicacion.setDate(null);
                     tfEdadMinimaJuego.setText("");
-                    cbCompaniaJuego.setSelectedItem(null);
-                    cbProgramadorJuego.setSelectedItem(null);
+
                 }
                 tfNombreJuego.setEditable(editable);
                 tfGeneroJuego.setEditable(editable);
@@ -329,8 +322,7 @@ public class Ventana {
                 tfSoporteJuego.setEditable(editable);
                 tfPrecioJuego.setEditable(editable);
                 tfEdadMinimaJuego.setEditable(editable);
-                cbCompaniaJuego.setEnabled(editable);
-                cbProgramadorJuego.setEnabled(editable);
+
 
                 btNuevoJuego.setEnabled(!editable);
                 btCancelarJuego.setEnabled(editable);
@@ -373,7 +365,6 @@ public class Ventana {
                     tfApellidosProgramador.setText("");
                     tfEmailProgramador.setText("");
                     tfSalarioProgramador.setText("");
-                    cbCompaniaProgramador.setSelectedItem(null);
                 }
 
                 tfNombreProgramador.setEditable(editable);
@@ -381,7 +372,6 @@ public class Ventana {
                 tfEmailProgramador.setEditable(editable);
                 tfSalarioProgramador.setEditable(editable);
                 tfSalarioProgramador.setEditable(editable);
-                cbCompaniaProgramador.setEnabled(editable);
 
                 btNuevoProgramador.setEnabled(!editable);
                 btCancelarProgramador.setEnabled(editable);
@@ -455,8 +445,7 @@ public class Ventana {
                 juego.setSoporte(tfSoporteJuego.getText());
                 juego.setPrecio(Float.parseFloat(tfPrecioJuego.getText()));
                 juego.setEdadMinima(Integer.parseInt(tfEdadMinimaJuego.getText()));
-                juego.setCompania((Compania) cbCompaniaJuego.getSelectedItem());
-                juego.setProgramador((Programador) cbProgramadorJuego.getSelectedItem());
+
 
                 if (nuevoJuego)
                     listaJuegos.add(juego);
@@ -489,7 +478,7 @@ public class Ventana {
                 programador.setApellidos(tfApellidosProgramador.getText());
                 programador.setEmail(tfEmailProgramador.getText());
                 programador.setSalario(Float.valueOf(tfSalarioProgramador.getText()));
-                programador.setCompania((Compania) cbCompaniaProgramador.getSelectedItem());
+
 
                 if (nuevoProgramador)
                     listaProgramadores.add(programador);
