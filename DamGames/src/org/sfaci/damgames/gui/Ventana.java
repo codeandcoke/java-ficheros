@@ -75,6 +75,7 @@ public class Ventana {
     private JDateChooser dcFechaPublicacion;
     private JTextField tfFiltroCompania;
     private JLabel lbEstado;
+    private JComboProgramador JComboProgramador1;
     private JComboProgramador JComboProgramador2;
 
     private List<Juego> listaJuegos;

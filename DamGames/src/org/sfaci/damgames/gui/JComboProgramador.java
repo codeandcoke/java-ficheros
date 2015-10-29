@@ -30,4 +30,9 @@ public class JComboProgramador<Programador> extends JComboBox {
 
         return null;
     }
+
+    public Programador getProgramadorSeleccionado() {
+
+        return null;
+    }
 }
