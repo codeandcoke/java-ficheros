@@ -301,7 +301,7 @@
                   <enabled value="false"/>
                 </properties>
               </component>
-              <component id="464d5" class="org.sfaci.damgames.gui.JComboProgramador" binding="JComboProgramador1" default-binding="true">
+              <component id="49257" class="org.sfaci.damgames.gui.JComboProgramador" binding="cbProgramadorJuego" custom-create="true" default-binding="true">
                 <constraints>
                   <grid row="12" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <forms/>
@@ -557,6 +557,15 @@
                   <text value="&gt;"/>
                 </properties>
               </component>
+              <component id="17220" class="javax.swing.JButton" binding="btUltimaCompania">
+                <constraints>
+                  <grid row="16" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <text value="&gt;|"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <grid id="15eeb" layout-manager="FormLayout">
@@ -802,6 +811,13 @@
                   <preferredSize width="90" height="25"/>
                   <text value="&gt;|"/>
                 </properties>
+              </component>
+              <component id="bed6c" class="org.sfaci.damgames.gui.JComboCompania" binding="cbCompaniaProgramador" custom-create="true" default-binding="true">
+                <constraints>
+                  <grid row="8" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties/>
               </component>
             </children>
           </grid>

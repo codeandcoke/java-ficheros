@@ -66,7 +66,6 @@ public class Ventana {
     private JButton btPrimeroCompania;
     private JButton btAnteriorCompania;
     private JButton btSiguienteCompania;
-    private JButton btUltimoCompania;
     private JButton btPrimeroProgramador;
     private JButton btAnteriorProgramador;
     private JButton btSiguienteProgramador;
@@ -75,8 +74,9 @@ public class Ventana {
     private JDateChooser dcFechaPublicacion;
     private JTextField tfFiltroCompania;
     private JLabel lbEstado;
-    private JComboProgramador JComboProgramador1;
-    private JComboProgramador JComboProgramador2;
+    private JComboProgramador cbProgramadorJuego;
+    private JButton btUltimaCompania;
+    private JComboCompania cbCompaniaProgramador;
 
     private List<Juego> listaJuegos;
     private List<Compania> listaCompanias;
@@ -100,18 +100,15 @@ public class Ventana {
 
     public Ventana() {
 
-        listaJuegos = new ArrayList<Juego>();
-        listaCompanias = new ArrayList<Compania>();
-        listaProgramadores = new ArrayList<Programador>();
         posicionJuegos = 0;
         posicionCompanias = 0;
         posicionProgramadores = 0;
 
-        modeloListaJuegos = new DefaultListModel<Juego>();
+        modeloListaJuegos = new DefaultListModel<>();
         jlistJuegos.setModel(modeloListaJuegos);
-        modeloListaCompanias = new DefaultListModel<Compania>();
+        modeloListaCompanias = new DefaultListModel<>();
         jlistCompanias.setModel(modeloListaCompanias);
-        modeloListaProgramadores = new DefaultListModel<Programador>();
+        modeloListaProgramadores = new DefaultListModel<>();
         jlistProgramadores.setModel(modeloListaProgramadores);
 
         tpPestanas.addChangeListener(new ChangeListener() {
@@ -230,10 +227,24 @@ public class Ventana {
                 filtrar(Tipo.PROGRAMADOR);
             }
         });
+
+        modoEdicion(Tipo.JUEGO, false);
+        modoEdicion(Tipo.COMPANIA, false);
+        modoEdicion(Tipo.PROGRAMADOR, false);
     }
 
     private void createUIComponents() {
-        JComboProgramador2 = new JComboProgramador<Programador>(listaProgramadores);
+
+        cargarDatos();
+
+        cbProgramadorJuego = new JComboProgramador(listaProgramadores);
+        cbCompaniaProgramador = new JComboCompania(listaCompanias);
+    }
+
+    private void cargarDatos() {
+        listaProgramadores = new ArrayList<>();
+        listaCompanias = new ArrayList<>();
+        listaJuegos = new ArrayList<>();
     }
 
     private void cargarPestanaActual() {
@@ -356,7 +367,7 @@ public class Ventana {
                 btEliminarCompania.setEnabled(!editable);
 
                 btPrimeroCompania.setEnabled(!editable);
-                btUltimoCompania.setEnabled(!editable);
+                btUltimaCompania.setEnabled(!editable);
                 btAnteriorCompania.setEnabled(!editable);
                 btSiguienteCompania.setEnabled(!editable);
                 break;
@@ -467,8 +478,14 @@ public class Ventana {
                 if (nuevaCompania)
                     listaCompanias.add(compania);
 
+                cbCompaniaProgramador.listar();
                 break;
             case PROGRAMADOR:
+
+                if (cbCompaniaProgramador.getCompaniaSeleccionada() == null) {
+                    return;
+                }
+
                 Programador programador = null;
                 if (nuevoProgramador)
                     programador = new Programador();
@@ -480,10 +497,14 @@ public class Ventana {
                 programador.setEmail(tfEmailProgramador.getText());
                 programador.setSalario(Float.valueOf(tfSalarioProgramador.getText()));
 
+                Compania companiaProgramador = cbCompaniaProgramador.getCompaniaSeleccionada();
+                programador.setCompania(companiaProgramador);
+                companiaProgramador.getProgramadores().add(programador);
 
                 if (nuevoProgramador)
                     listaProgramadores.add(programador);
 
+                cbProgramadorJuego.listar();
                 break;
         }
 
