@@ -12,6 +12,8 @@
     <rowspec value="center:max(d;4px):noGrow"/>
     <rowspec value="top:4dlu:noGrow"/>
     <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:3dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
     <colspec value="fill:89px:noGrow"/>
     <colspec value="left:1dlu:noGrow"/>
     <colspec value="fill:88px:noGrow"/>
@@ -20,10 +22,10 @@
     <colspec value="left:1dlu:noGrow"/>
     <colspec value="fill:84px:noGrow"/>
     <constraints>
-      <xy x="20" y="20" width="370" height="160"/>
+      <xy x="20" y="20" width="370" height="220"/>
     </constraints>
     <properties>
-      <preferredSize width="370" height="200"/>
+      <preferredSize width="370" height="240"/>
     </properties>
     <border type="none"/>
     <children>
@@ -192,6 +194,12 @@
           <text value="&gt;|"/>
         </properties>
       </component>
+      <nested-form id="8a58d" form-file="org/sfaci/gestionanimales/gui/JBarraEstado.form" binding="barraEstado">
+        <constraints>
+          <grid row="12" column="0" row-span="1" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <forms/>
+        </constraints>
+      </nested-form>
     </children>
   </grid>
 </form>
