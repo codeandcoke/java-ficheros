@@ -160,6 +160,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <actionCommand value="Anterior"/>
           <enabled value="false"/>
           <text value="&lt;"/>
         </properties>
@@ -170,6 +171,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <actionCommand value="Siguiente"/>
           <enabled value="false"/>
           <text value="&gt;"/>
         </properties>
@@ -180,6 +182,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <actionCommand value="Primero"/>
           <enabled value="false"/>
           <text value="|&lt;"/>
         </properties>
@@ -190,6 +193,7 @@
           <forms defaultalign-horz="false"/>
         </constraints>
         <properties>
+          <actionCommand value="Ultimo"/>
           <enabled value="false"/>
           <text value="&gt;|"/>
         </properties>
