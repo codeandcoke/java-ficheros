@@ -3,7 +3,12 @@ package org.sfaci.gestionanimales.util;
 import javax.swing.*;
 
 /**
- * Created by Santi on 30/10/15.
+ * Helper class
+ *
+ * Clase con métodos de utilidades genéricas para la aplicación
+ *
+ * @author Santiago Faci
+ * @version curso 2015-2016
  */
 public class Util {
 

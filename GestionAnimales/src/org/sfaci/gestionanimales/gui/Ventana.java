@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Vector;
 
 /**
- * Aplicación para la gestión de animales
+ *
  *
  * @author Santiago Faci
  * @version curso 2015-2016

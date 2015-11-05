@@ -5,7 +5,9 @@ import org.sfaci.gestionanimales.base.Animal;
 import java.util.ArrayList;
 
 /**
- * Created by Santi on 30/10/15.
+ * Modelo para la ventana
+ * @author Santiago Faci
+ * @curso 2015-2016
  */
 public class VentanaModel {
 
@@ -17,12 +19,20 @@ public class VentanaModel {
         posicion = 0;
     }
 
+    /**
+     * Guarda un animal en la lista
+     * @param animal
+     */
     public void guardar(Animal animal) {
 
         listaAnimales.add(animal);
         posicion++;
     }
 
+    /**
+     * Modifica los datos del animal actual
+     * @param animalModificado
+     */
     public void modificar(Animal animalModificado) {
 
         Animal animal = listaAnimales.get(posicion);
@@ -32,6 +42,9 @@ public class VentanaModel {
         animal.setPeso(animalModificado.getPeso());
     }
 
+    /**
+     * Elimina el animal actual
+     */
     public void eliminar() {
         listaAnimales.remove(posicion);
     }
@@ -41,12 +54,20 @@ public class VentanaModel {
         return listaAnimales.get(posicion);
     }
 
+    /**
+     * Obtiene el animal que está en primera posición en la lista
+     * @return
+     */
     public Animal getPrimero() {
 
         posicion = 0;
         return listaAnimales.get(posicion);
     }
 
+    /**
+     * Obtiene el animal que está en la posición anterior a la actual
+     * @return
+     */
     public Animal getAnterior() {
 
         if (posicion == 0)
@@ -56,6 +77,10 @@ public class VentanaModel {
         return listaAnimales.get(posicion);
     }
 
+    /**
+     * Obtiene el animal que está en la posición siguiente a la actual
+     * @return
+     */
     public Animal getSiguiente() {
 
         if (posicion == listaAnimales.size() - 1)
@@ -65,6 +90,10 @@ public class VentanaModel {
         return listaAnimales.get(posicion);
     }
 
+    /**
+     * Obtiene el animal que está en la última posición de la lista
+     * @return
+     */
     public Animal getUltimo() {
 
         posicion = listaAnimales.size() - 1;

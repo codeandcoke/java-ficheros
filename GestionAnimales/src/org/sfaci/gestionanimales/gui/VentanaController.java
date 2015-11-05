@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
- * Created by Santi on 30/10/15.
+ * Controlador para la ventana
+ * @author Santiago Faci
+ * @version curso 2015-2016
  */
 public class VentanaController implements ActionListener {
 
@@ -112,6 +114,10 @@ public class VentanaController implements ActionListener {
         }
     }
 
+    /**
+     * Carga los datos de un animal en la vista
+     * @param animal
+     */
     private void cargar(Animal animal) {
         if (animal == null)
             return;

@@ -5,7 +5,12 @@ import org.sfaci.gestionanimales.gui.VentanaController;
 import org.sfaci.gestionanimales.gui.VentanaModel;
 
 /**
- * Created by Santi on 30/10/15.
+ * Aplicación para la gestión de animales utilizando el patrón MVC
+ *
+ * Clase principal, que solamente lanza la aplicación
+ *
+ * @author Santiago Faci
+ * @version 2015-2016
  */
 public class Principal {
 
