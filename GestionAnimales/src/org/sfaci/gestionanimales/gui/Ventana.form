@@ -161,7 +161,7 @@
         </constraints>
         <properties>
           <actionCommand value="Anterior"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="&lt;"/>
         </properties>
       </component>
@@ -172,7 +172,7 @@
         </constraints>
         <properties>
           <actionCommand value="Siguiente"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="&gt;"/>
         </properties>
       </component>
@@ -183,7 +183,7 @@
         </constraints>
         <properties>
           <actionCommand value="Primero"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="|&lt;"/>
         </properties>
       </component>
@@ -194,7 +194,7 @@
         </constraints>
         <properties>
           <actionCommand value="Ultimo"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <text value="&gt;|"/>
         </properties>
       </component>

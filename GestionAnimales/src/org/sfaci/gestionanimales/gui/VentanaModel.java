@@ -20,6 +20,7 @@ public class VentanaModel {
     public void guardar(Animal animal) {
 
         listaAnimales.add(animal);
+        posicion++;
     }
 
     public void modificar(Animal animalModificado) {

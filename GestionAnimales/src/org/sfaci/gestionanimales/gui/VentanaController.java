@@ -126,5 +126,11 @@ public class VentanaController implements ActionListener {
 
         view.btNuevo.addActionListener(listener);
         view.btGuardar.addActionListener(listener);
+        view.btModificar.addActionListener(listener);
+        view.btEliminar.addActionListener(listener);
+        view.btPrimero.addActionListener(listener);
+        view.btAnterior.addActionListener(listener);
+        view.btSiguiente.addActionListener(listener);
+        view.btUltimo.addActionListener(listener);
     }
 }
