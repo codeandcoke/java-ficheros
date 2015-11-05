@@ -30,6 +30,8 @@ public class Ventana {
     JButton btPrimero;
     JButton btUltimo;
     JBarraEstado barraEstado;
+    JTextField tfBusqueda;
+    JButton btBuscar;
 
     public Ventana() {
 

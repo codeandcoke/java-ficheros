@@ -1,20 +1,21 @@
 package org.sfaci.gestionanimales.gui;
 
 import org.sfaci.gestionanimales.base.Animal;
-import org.sfaci.gestionanimales.gui.Ventana;
 import org.sfaci.gestionanimales.util.Util;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Controlador para la ventana
  * @author Santiago Faci
  * @version curso 2015-2016
  */
-public class VentanaController implements ActionListener {
+public class VentanaController implements ActionListener, KeyListener {
 
     private VentanaModel model;
     private Ventana view;
@@ -24,7 +25,8 @@ public class VentanaController implements ActionListener {
     public VentanaController(VentanaModel model, Ventana view) {
         this.model = model;
         this.view = view;
-        anadirListeners(this);
+        anadirActionListener(this);
+        anadirKeyListener(this);
 
         posicion = 0;
     }
@@ -93,6 +95,14 @@ public class VentanaController implements ActionListener {
                 animal = model.getActual();
                 cargar(animal);
                 break;
+            case "Buscar":
+                animal = model.buscar(view.tfBusqueda.getText());
+                if (animal == null) {
+                    Util.mensajeInformacion("No se ha encontrado ningún animal con ese nombre", "Buscar");
+                    return;
+                }
+                cargar(animal);
+                break;
             case "Primero":
                 animal = model.getPrimero();
                 cargar(animal);
@@ -114,6 +124,26 @@ public class VentanaController implements ActionListener {
         }
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+        if (e.getSource() == view.tfBusqueda) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                view.btBuscar.doClick();
+            }
+        }
+    }
+
     /**
      * Carga los datos de un animal en la vista
      * @param animal
@@ -128,7 +158,11 @@ public class VentanaController implements ActionListener {
         view.tfPeso.setText(String.valueOf(animal.getPeso()));
     }
 
-    private void anadirListeners(ActionListener listener) {
+    private void anadirKeyListener(KeyListener listener) {
+        view.tfBusqueda.addKeyListener(listener);
+    }
+
+    private void anadirActionListener(ActionListener listener) {
 
         view.btNuevo.addActionListener(listener);
         view.btGuardar.addActionListener(listener);
@@ -138,5 +172,6 @@ public class VentanaController implements ActionListener {
         view.btAnterior.addActionListener(listener);
         view.btSiguiente.addActionListener(listener);
         view.btUltimo.addActionListener(listener);
+        view.btBuscar.addActionListener(listener);
     }
 }

@@ -55,6 +55,21 @@ public class VentanaModel {
     }
 
     /**
+     * Busca un animal en la lista
+     * @param nombre El nombre del animal
+     * @return El animal o null si no se ha encontrado nada
+     */
+    public Animal buscar(String nombre) {
+        for (Animal animal : listaAnimales) {
+            if (animal.getNombre().equals(nombre)) {
+                return animal;
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Obtiene el animal que está en primera posición en la lista
      * @return
      */
