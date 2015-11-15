@@ -308,6 +308,13 @@
                 </constraints>
                 <properties/>
               </component>
+              <component id="22b02" class="org.sfaci.damgames.gui.JComboCompania" binding="JComboCompania1" custom-create="true" default-binding="true">
+                <constraints>
+                  <grid row="14" column="2" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties/>
+              </component>
             </children>
           </grid>
           <grid id="fee9b" layout-manager="FormLayout">

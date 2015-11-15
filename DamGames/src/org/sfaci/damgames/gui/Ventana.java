@@ -77,6 +77,7 @@ public class Ventana {
     private JComboProgramador cbProgramadorJuego;
     private JButton btUltimaCompania;
     private JComboCompania cbCompaniaProgramador;
+    private JComboCompania JComboCompania1;
 
     private List<Juego> listaJuegos;
     private List<Compania> listaCompanias;
@@ -614,9 +615,29 @@ public class Ventana {
         }
     }
 
+    public JMenuBar getMenu() {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu menuArchivo = new JMenu("Archivo");
+        JMenuItem itemSalir = new JMenuItem("Salir");
+        menuArchivo.add(itemSalir);
+
+        JMenu menuAyuda = new JMenu("Ayuda");
+        JMenuItem itemAcerca = new JMenuItem("Acerca de");
+        menuAyuda.add(itemAcerca);
+
+        menuBar.add(menuArchivo);
+        menuBar.add(menuAyuda);
+
+        return menuBar;
+    }
+
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Ventana");
-        frame.setContentPane(new Ventana().panel1);
+        Ventana ventana = new Ventana();
+        frame.setJMenuBar(ventana.getMenu());
+        frame.setContentPane(ventana.panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         // Coloca la ventana en el centro de la pantalla

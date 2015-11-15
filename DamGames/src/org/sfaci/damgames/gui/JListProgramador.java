@@ -8,17 +8,24 @@ import java.util.List;
 /**
  * Created by Santi on 30/10/15.
  */
-public class JListProgramador extends JList {
+public class JListProgramador extends JList<Programador> {
 
     private DefaultListModel<Programador> modelo;
     private List<Programador> datos;
 
-    public JListProgramador() {
+    public JListProgramador(List<Programador> datos) {
 
+        super();
+        this.datos = datos;
+        modelo = new DefaultListModel<>();
+        setModel(modelo);
+        listar();
     }
 
     public void listar() {
 
+        for (Programador programador : datos)
+            modelo.addElement(programador);
     }
 
     public void listar(String filtro) {
@@ -27,7 +34,10 @@ public class JListProgramador extends JList {
 
     public Programador getProgramadorSeleccionado() {
 
-        return null;
+        if (getSelectedIndex() == -1)
+            return null;
+
+        return datos.get(getSelectedIndex());
     }
 
     public int getCantidadProgramadores() {
