@@ -22,8 +22,9 @@ public class VentanaModel {
     /**
      * Registra un nuevo coche
      */
-    public void registrarCoche() {
+    public void registrarCoche(Coche coche) {
 
+        coches.put(coche.getMatricula(), coche);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.sfaci.concesionario.gui;
 
+import com.sfaci.concesionario.base.Coche;
+
 import javax.swing.*;
 
 /**
@@ -26,6 +28,7 @@ public class Ventana {
     JRadioButton rbDiesel;
     JCheckBox cbHibrido;
     ButtonGroup bgCombustible;
+    DefaultListModel<Coche> dlmCoches;
 
     public Ventana() {
         JFrame frame = new JFrame("Ventana");
@@ -38,5 +41,8 @@ public class Ventana {
         bgCombustible = new ButtonGroup();
         bgCombustible.add(rbDiesel);
         bgCombustible.add(rbGasolina);
+
+        dlmCoches = new DefaultListModel<>();
+        lCoches.setModel(dlmCoches);
     }
 }

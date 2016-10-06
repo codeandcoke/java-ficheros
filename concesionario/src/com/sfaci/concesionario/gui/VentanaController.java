@@ -1,9 +1,15 @@
 package com.sfaci.concesionario.gui;
 
+import com.sfaci.concesionario.base.Coche;
+import com.sfaci.concesionario.util.Util;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  * Controlador de la ventana Ventana
@@ -66,9 +72,43 @@ public class VentanaController implements ActionListener,
 
                 break;
             case "Guardar":
-                modoEdicion(false);
                 switch (accion) {
                     case NUEVO:
+
+                        if (view.tfMatricula.getText().equals("")) {
+                            JOptionPane.showMessageDialog(null, "Matricula obligatoria",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+
+                        if (view.bgCombustible.isSelected(null)) {
+                            JOptionPane.showMessageDialog(null, "Selecciona combustible",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+
+                        Date fecha;
+                        try {
+                            fecha = Util.parseFecha(view.tfCompra.getText());
+                        } catch (ParseException pe) {
+                            JOptionPane.showMessageDialog(null, "Fecha no válida",
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+
+                        Coche coche = new Coche();
+                        coche.setMatricula(view.tfMatricula.getText());
+                        coche.setModelo(view.tfModelo.getText());
+                        coche.setPotencia(Float.parseFloat(view.tfPotencia.getText()));
+                        coche.setFechaCompra(fecha);
+                        coche.setHibrido(view.cbHibrido.isSelected());
+                        if (view.rbDiesel.isSelected())
+                            coche.setCombustible(Coche.Combustible.DIESEL);
+                        else if (view.rbGasolina.isSelected())
+                            coche.setCombustible(Coche.Combustible.GASOLINA);
+
+                        model.registrarCoche(coche);
+                        view.dlmCoches.addElement(coche);
 
                         break;
                     case MODIFICAR:
@@ -77,6 +117,7 @@ public class VentanaController implements ActionListener,
                     default:
                 }
                 view.lbEstado.setText("Guardado");
+                modoEdicion(false);
                 break;
             case "Cancelar":
                 modoEdicion(false);

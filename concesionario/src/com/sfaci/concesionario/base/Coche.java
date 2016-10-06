@@ -72,4 +72,9 @@ public class Coche {
     public void setHibrido(boolean hibrido) {
         this.hibrido = hibrido;
     }
+
+    @Override
+    public String toString() {
+        return matricula;
+    }
 }
