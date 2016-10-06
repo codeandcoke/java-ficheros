@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by profesor on 29/09/2016.
+ * Modelo para la ventana de la aplicación
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class VentanaModel {
 
@@ -16,19 +19,34 @@ public class VentanaModel {
         coches = new HashMap<>();
     }
 
+    /**
+     * Registra un nuevo coche
+     */
     public void registrarCoche() {
 
     }
 
+    /**
+     * Elimina un coche
+     */
     public void eliminarCoche() {
 
     }
 
+    /**
+     * Obtiene un coche a partir de su matrícula
+     * @param matricula
+     * @return
+     */
     public Coche obtenerCoche(String matricula) {
 
         return null;
     }
 
+    /**
+     * Obtiene una lista con todos los coches
+     * @return
+     */
     public ArrayList<Coche> obtenerCoches() {
 
         return null;

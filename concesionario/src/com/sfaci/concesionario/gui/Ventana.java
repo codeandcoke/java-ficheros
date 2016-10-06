@@ -3,7 +3,10 @@ package com.sfaci.concesionario.gui;
 import javax.swing.*;
 
 /**
- * Created by profesor on 29/09/2016.
+ * GUI de la aplicación
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class Ventana {
     JPanel panel1;

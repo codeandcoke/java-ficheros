@@ -7,6 +7,9 @@ import java.awt.event.KeyListener;
 
 /**
  * Controlador de la ventana Ventana
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class VentanaController implements ActionListener,
         KeyListener {
@@ -86,6 +89,9 @@ public class VentanaController implements ActionListener,
         }
     }
 
+    /*
+    Limpia las cajas de texto de la GUI
+     */
     private void limpiarGUI() {
 
         view.tfMatricula.setText("");
@@ -95,6 +101,10 @@ public class VentanaController implements ActionListener,
         view.cbHibrido.setSelected(false);
     }
 
+    /**
+     * Activa/desactiva el modo edición de la GUI
+     * @param edicion Si vale true se activará el modo edición. En caso contrario se activa el modo 'sólo ver'
+     */
     private void modoEdicion(boolean edicion) {
 
         view.btNuevo.setEnabled(!edicion);

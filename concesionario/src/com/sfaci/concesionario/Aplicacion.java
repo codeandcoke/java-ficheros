@@ -5,7 +5,11 @@ import com.sfaci.concesionario.gui.VentanaController;
 import com.sfaci.concesionario.gui.VentanaModel;
 
 /**
- * Created by profesor on 29/09/2016.
+ * Clase principal de la aplicación
+ * Sólo ejecuta la aplicación
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class Aplicacion {
 

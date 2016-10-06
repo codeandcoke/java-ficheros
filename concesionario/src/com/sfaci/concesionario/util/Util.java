@@ -1,7 +1,10 @@
 package com.sfaci.concesionario.util;
 
 /**
- * Created by profesor on 30/09/2016.
+ * Métodos de utilidad
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class Util {
 }

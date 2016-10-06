@@ -3,7 +3,10 @@ package com.sfaci.concesionario.base;
 import java.util.Date;
 
 /**
- * Created by profesor on 29/09/2016.
+ * Clase que representa los Vehículos
+ *
+ * @author Santiago Faci
+ * @version curso 2016-2017
  */
 public class Coche {
 
