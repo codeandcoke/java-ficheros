@@ -4,6 +4,8 @@ import com.sfaci.concesionario.base.Coche;
 import com.sfaci.concesionario.util.Util;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,7 +20,7 @@ import java.util.Date;
  * @version curso 2016-2017
  */
 public class VentanaController implements ActionListener,
-        KeyListener {
+        KeyListener, ListSelectionListener {
 
     private enum Accion {
         NUEVO, MODIFICAR;
@@ -35,6 +37,7 @@ public class VentanaController implements ActionListener,
         this.model = model;
 
         addActionListeners();
+        addSelectionListeners();
         addKeyListener();
     }
 
@@ -45,6 +48,10 @@ public class VentanaController implements ActionListener,
         view.btEliminar.addActionListener(this);
         view.btGuardar.addActionListener(this);
         view.btModificar.addActionListener(this);
+    }
+
+    private void addSelectionListeners() {
+        view.lCoches.addListSelectionListener(this);
     }
 
     private void addKeyListener() {
@@ -176,5 +183,23 @@ public class VentanaController implements ActionListener,
     @Override
     public void keyReleased(KeyEvent keyEvent) {
 
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+
+        Coche coche = (Coche) view.lCoches.getSelectedValue();
+        if (coche == null)
+            return;
+
+        view.tfMatricula.setText(coche.getMatricula());
+        view.tfModelo.setText(coche.getModelo());
+        view.tfCompra.setText(Util.formatFecha(coche.getFechaCompra()));
+        view.tfPotencia.setText(String.valueOf(coche.getPotencia()));
+        view.cbHibrido.setSelected(coche.isHibrido());
+        if (coche.getCombustible() == Coche.Combustible.DIESEL)
+            view.rbDiesel.setSelected(true);
+        else
+            view.rbGasolina.setSelected(true);
     }
 }
