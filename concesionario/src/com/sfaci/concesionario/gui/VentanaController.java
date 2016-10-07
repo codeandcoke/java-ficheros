@@ -79,50 +79,50 @@ public class VentanaController implements ActionListener,
 
                 break;
             case "Guardar":
+
+                if (view.tfMatricula.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Matricula obligatoria",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                if (view.bgCombustible.isSelected(null)) {
+                    JOptionPane.showMessageDialog(null, "Selecciona combustible",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                Date fecha;
+                try {
+                    fecha = Util.parseFecha(view.tfCompra.getText());
+                } catch (ParseException pe) {
+                    JOptionPane.showMessageDialog(null, "Fecha no válida",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                Coche nuevoCoche = new Coche();
+                nuevoCoche.setMatricula(view.tfMatricula.getText());
+                nuevoCoche.setModelo(view.tfModelo.getText());
+                nuevoCoche.setPotencia(Float.parseFloat(view.tfPotencia.getText()));
+                nuevoCoche.setFechaCompra(fecha);
+                nuevoCoche.setHibrido(view.cbHibrido.isSelected());
+                if (view.rbDiesel.isSelected())
+                    nuevoCoche.setCombustible(Coche.Combustible.DIESEL);
+                else if (view.rbGasolina.isSelected())
+                    nuevoCoche.setCombustible(Coche.Combustible.GASOLINA);
+
                 switch (accion) {
                     case NUEVO:
-
-                        if (view.tfMatricula.getText().equals("")) {
-                            JOptionPane.showMessageDialog(null, "Matricula obligatoria",
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-
-                        if (view.bgCombustible.isSelected(null)) {
-                            JOptionPane.showMessageDialog(null, "Selecciona combustible",
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-
-                        Date fecha;
-                        try {
-                            fecha = Util.parseFecha(view.tfCompra.getText());
-                        } catch (ParseException pe) {
-                            JOptionPane.showMessageDialog(null, "Fecha no válida",
-                                    "Error", JOptionPane.ERROR_MESSAGE);
-                            return;
-                        }
-
-                        Coche coche = new Coche();
-                        coche.setMatricula(view.tfMatricula.getText());
-                        coche.setModelo(view.tfModelo.getText());
-                        coche.setPotencia(Float.parseFloat(view.tfPotencia.getText()));
-                        coche.setFechaCompra(fecha);
-                        coche.setHibrido(view.cbHibrido.isSelected());
-                        if (view.rbDiesel.isSelected())
-                            coche.setCombustible(Coche.Combustible.DIESEL);
-                        else if (view.rbGasolina.isSelected())
-                            coche.setCombustible(Coche.Combustible.GASOLINA);
-
-                        model.registrarCoche(coche);
-                        view.dlmCoches.addElement(coche);
-
+                        model.registrarCoche(nuevoCoche);
                         break;
                     case MODIFICAR:
-
+                        String matricula = view.lCoches.getSelectedValue().toString();
+                        model.modificarCoche(nuevoCoche, matricula);
                         break;
                     default:
                 }
+                refrescarLista();
                 view.lbEstado.setText("Guardado");
                 modoEdicion(false);
                 break;
@@ -168,6 +168,17 @@ public class VentanaController implements ActionListener,
 
         view.tfBusqueda.setEnabled(!edicion);
         view.lCoches.setEnabled(!edicion);
+    }
+
+    /*
+    Refresca la lista de coches de la ventana
+     */
+    private void refrescarLista() {
+
+        view.dlmCoches.clear();
+        for (Coche coche : model.obtenerCoches()) {
+            view.dlmCoches.addElement(coche);
+        }
     }
 
     @Override

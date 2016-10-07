@@ -3,6 +3,7 @@ package com.sfaci.concesionario.gui;
 import com.sfaci.concesionario.base.Coche;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -27,6 +28,17 @@ public class VentanaModel {
         coches.put(coche.getMatricula(), coche);
     }
 
+    public void modificarCoche(Coche nuevoCoche, String matricula) {
+
+        Coche coche = coches.get(matricula);
+        coche.setMatricula(nuevoCoche.getMatricula());
+        coche.setModelo(nuevoCoche.getModelo());
+        coche.setFechaCompra(nuevoCoche.getFechaCompra());
+        coche.setPotencia(nuevoCoche.getPotencia());
+        coche.setCombustible(nuevoCoche.getCombustible());
+        coche.setHibrido(nuevoCoche.isHibrido());
+    }
+
     /**
      * Elimina un coche
      */
@@ -48,8 +60,8 @@ public class VentanaModel {
      * Obtiene una lista con todos los coches
      * @return
      */
-    public ArrayList<Coche> obtenerCoches() {
+    public Collection<Coche> obtenerCoches() {
 
-        return null;
+        return coches.values();
     }
 }
