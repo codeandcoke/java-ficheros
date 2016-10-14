@@ -1,6 +1,7 @@
 package com.sfaci.concesionario.gui;
 
 import com.sfaci.concesionario.base.Coche;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 
@@ -15,7 +16,6 @@ public class Ventana {
     JLabel lbEstado;
     JTextField tfMatricula;
     JTextField tfModelo;
-    JTextField tfCompra;
     JTextField tfPotencia;
     JTextField tfBusqueda;
     JList lCoches;
@@ -26,7 +26,7 @@ public class Ventana {
     JButton btCancelar;
     JRadioButton rbGasolina;
     JRadioButton rbDiesel;
-    JCheckBox cbHibrido;
+    JCheckBox cbHibrido;JDateChooser tfCompra;
     ButtonGroup bgCombustible;
     DefaultListModel<Coche> dlmCoches;
 

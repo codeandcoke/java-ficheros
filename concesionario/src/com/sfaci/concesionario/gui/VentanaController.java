@@ -42,6 +42,8 @@ public class VentanaController implements ActionListener,
         addActionListeners();
         addSelectionListeners();
         addKeyListener();
+
+        refrescarLista();
     }
 
     private void addActionListeners() {
@@ -84,8 +86,7 @@ public class VentanaController implements ActionListener,
             case "Guardar":
 
                 if (view.tfMatricula.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Matricula obligatoria",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                    Util.mensajeError("Matricula Obligatoria");
                     return;
                 }
 
@@ -96,13 +97,7 @@ public class VentanaController implements ActionListener,
                 }
 
                 Date fecha;
-                try {
-                    fecha = Util.parseFecha(view.tfCompra.getText());
-                } catch (ParseException pe) {
-                    JOptionPane.showMessageDialog(null, "Fecha no válida",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
+                fecha = view.tfCompra.getDate();
 
                 Coche nuevoCoche = new Coche();
                 nuevoCoche.setMatricula(view.tfMatricula.getText());
@@ -158,9 +153,7 @@ public class VentanaController implements ActionListener,
                 try {
                     model.guardarAFichero();
                 } catch (IOException ioe) {
-                    JOptionPane.showMessageDialog(null,
-                            "Error al escribir en disco", "Error",
-                            JOptionPane.ERROR_MESSAGE);
+                    Util.mensajeError("Error al escribir en disco");
                 }
                 break;
             default:
@@ -175,7 +168,7 @@ public class VentanaController implements ActionListener,
         view.tfMatricula.setText("");
         view.tfModelo.setText("");
         view.tfPotencia.setText("");
-        view.tfCompra.setText("");
+        view.tfCompra.setDate(null);
         view.cbHibrido.setSelected(false);
     }
 
@@ -194,7 +187,7 @@ public class VentanaController implements ActionListener,
         view.tfMatricula.setEditable(edicion);
         view.tfModelo.setEditable(edicion);
         view.tfPotencia.setEditable(edicion);
-        view.tfCompra.setEditable(edicion);
+        view.tfCompra.setEnabled(edicion);
 
         view.tfBusqueda.setEnabled(!edicion);
         view.lCoches.setEnabled(!edicion);
@@ -246,7 +239,7 @@ public class VentanaController implements ActionListener,
 
         view.tfMatricula.setText(coche.getMatricula());
         view.tfModelo.setText(coche.getModelo());
-        view.tfCompra.setText(Util.formatFecha(coche.getFechaCompra()));
+        view.tfCompra.setDate(coche.getFechaCompra());
         view.tfPotencia.setText(String.valueOf(coche.getPotencia()));
         view.cbHibrido.setSelected(coche.isHibrido());
         if (coche.getCombustible() == Coche.Combustible.DIESEL)
