@@ -2,6 +2,7 @@ package com.sfaci.concesionario.gui;
 
 import com.sfaci.concesionario.base.Coche;
 import com.sfaci.concesionario.util.Util;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -10,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -122,6 +125,13 @@ public class VentanaController implements ActionListener,
                         break;
                     default:
                 }
+                try {
+                    model.guardarAFichero();
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Error al escribir en disco", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
                 refrescarLista();
                 view.lbEstado.setText("Guardado");
                 modoEdicion(false);
@@ -131,7 +141,27 @@ public class VentanaController implements ActionListener,
                 view.lbEstado.setText("Cancelado");
                 break;
             case "Eliminar":
+                // 1. Preguntar al usuario
+                if (JOptionPane.showConfirmDialog(null,
+                        "¿Está seguro?", "Eliminar", JOptionPane.YES_NO_OPTION)
+                    == JOptionPane.NO_OPTION)
+                    return;
 
+                // 2. Eliminar
+                Coche coche = (Coche) view.lCoches.getSelectedValue();
+                model.eliminarCoche(coche.getMatricula());
+
+                // 3. Refrescar
+                refrescarLista();
+
+                // 4. Guardar cambios en disco
+                try {
+                    model.guardarAFichero();
+                } catch (IOException ioe) {
+                    JOptionPane.showMessageDialog(null,
+                            "Error al escribir en disco", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
                 break;
             default:
         }
@@ -183,17 +213,28 @@ public class VentanaController implements ActionListener,
 
     @Override
     public void keyTyped(KeyEvent keyEvent) {
-
     }
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
 
+        ArrayList<Coche> coches;
+        String cadenaBusqueda = view.tfBusqueda.getText();
+
+        if (cadenaBusqueda.length() < 3) {
+            coches = new ArrayList<>(model.obtenerCoches());
+        }
+        else {
+            coches = model.obtenerCoches(cadenaBusqueda);
+        }
+
+        view.dlmCoches.clear();
+        for (Coche coche : coches)
+            view.dlmCoches.addElement(coche);
     }
 
     @Override

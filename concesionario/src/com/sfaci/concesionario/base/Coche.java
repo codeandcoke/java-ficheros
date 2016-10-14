@@ -1,5 +1,6 @@
 package com.sfaci.concesionario.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  * @author Santiago Faci
  * @version curso 2016-2017
  */
-public class Coche {
+public class Coche implements Serializable {
 
     public enum Combustible {
         GASOLINA, DIESEL
