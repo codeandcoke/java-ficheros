@@ -96,19 +96,27 @@ public class VentanaController implements ActionListener,
                     return;
                 }
 
+                if (view.tfPotencia.getText().equals(""))
+                    view.tfPotencia.setText("0,00 cv");
+
                 Date fecha;
                 fecha = view.tfCompra.getDate();
 
                 Coche nuevoCoche = new Coche();
-                nuevoCoche.setMatricula(view.tfMatricula.getText());
-                nuevoCoche.setModelo(view.tfModelo.getText());
-                nuevoCoche.setPotencia(Float.parseFloat(view.tfPotencia.getText()));
-                nuevoCoche.setFechaCompra(fecha);
-                nuevoCoche.setHibrido(view.cbHibrido.isSelected());
-                if (view.rbDiesel.isSelected())
-                    nuevoCoche.setCombustible(Coche.Combustible.DIESEL);
-                else if (view.rbGasolina.isSelected())
-                    nuevoCoche.setCombustible(Coche.Combustible.GASOLINA);
+                try {
+                    nuevoCoche.setMatricula(view.tfMatricula.getText());
+                    nuevoCoche.setModelo(view.tfModelo.getText());
+                    nuevoCoche.setPotencia(Util.parsePotencia(view.tfPotencia.getText()));
+                    nuevoCoche.setFechaCompra(fecha);
+                    nuevoCoche.setHibrido(view.cbHibrido.isSelected());
+                    if (view.rbDiesel.isSelected())
+                        nuevoCoche.setCombustible(Coche.Combustible.DIESEL);
+                    else if (view.rbGasolina.isSelected())
+                        nuevoCoche.setCombustible(Coche.Combustible.GASOLINA);
+                } catch (ParseException pe) {
+                    Util.mensajeError("Formato de potencia no válido");
+                    return;
+                }
 
                 switch (accion) {
                     case NUEVO:
@@ -240,11 +248,13 @@ public class VentanaController implements ActionListener,
         view.tfMatricula.setText(coche.getMatricula());
         view.tfModelo.setText(coche.getModelo());
         view.tfCompra.setDate(coche.getFechaCompra());
-        view.tfPotencia.setText(String.valueOf(coche.getPotencia()));
+        view.tfPotencia.setText(Util.formatPotencia(coche.getPotencia()));
         view.cbHibrido.setSelected(coche.isHibrido());
         if (coche.getCombustible() == Coche.Combustible.DIESEL)
             view.rbDiesel.setSelected(true);
         else
             view.rbGasolina.setSelected(true);
+
+        modoEdicion(false);
     }
 }

@@ -1,6 +1,7 @@
 package com.sfaci.concesionario.util;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,14 +14,28 @@ import java.util.Date;
  */
 public class Util {
 
+    private static final String PATRON_FECHA = "dd/mm/yyyy";
+    private static final String PATRON_POTENCIA = "#,##0.00 cv";
+
     public static Date parseFecha(String fecha) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat(PATRON_FECHA);
         return sdf.parse(fecha);
     }
 
     public static String formatFecha(Date fecha) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat(PATRON_FECHA);
         return sdf.format(fecha);
+    }
+
+    public static String formatPotencia(float potencia) {
+        DecimalFormat df = new DecimalFormat(PATRON_POTENCIA);
+        return df.format(potencia);
+    }
+
+    public static float parsePotencia(String potencia) throws ParseException {
+        DecimalFormat df = new DecimalFormat(PATRON_POTENCIA);
+        return df.parse(potencia).floatValue();
+
     }
 
     public static void mensajeError(String mensaje, String titulo) {

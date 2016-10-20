@@ -44,5 +44,7 @@ public class Ventana {
 
         dlmCoches = new DefaultListModel<>();
         lCoches.setModel(dlmCoches);
+
+        tfCompra.setEnabled(false);
     }
 }
